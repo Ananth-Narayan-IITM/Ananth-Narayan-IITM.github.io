@@ -1,0 +1,61 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container" style="position:relative;">
+    <svg class="gear-watermark" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M100 60a40 40 0 1 0 0 80 40 40 0 0 0 0-80zm0 10a30 30 0 1 1 0 60 30 30 0 0 1 0-60z" fill="currentColor"/>
+      <path d="M92 10h16l4 20a60 60 0 0 1 14 6l18-10 11 11-10 18a60 60 0 0 1 6 14l20 4v16l-20 4a60 60 0 0 1-6 14l10 18-11 11-18-10a60 60 0 0 1-14 6l-4 20H92l-4-20a60 60 0 0 1-14-6l-18 10-11-11 10-18a60 60 0 0 1-6-14L30 108V92l20-4a60 60 0 0 1 6-14L46 56l11-11 18 10a60 60 0 0 1 14-6l4-20z" fill="currentColor"/>
+    </svg>
+    <p class="page-header__eyebrow">Portfolio</p>
+    <h1 class="page-header__title">Projects</h1>
+    <p class="page-header__desc">Simulation, optimization, and custom code — organized by tool and method.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="project-hub">
+
+      <a href="/projects/openfoam/" class="project-hub__card" style="text-decoration:none;">
+        <div class="project-hub__icon" style="background:rgba(0,212,255,0.08);font-size:1.8rem;">🌊</div>
+        <div class="project-hub__title">OpenFOAM</div>
+        <div class="project-hub__count" style="margin-bottom:0.75rem;">
+          {{- $pages := where .Site.RegularPages "Section" "openfoam" -}}
+          {{ len $pages }} {{ if eq (len $pages) 1 }}project{{ else }}projects{{ end }} · Turbulence · Heat Transfer
+        </div>
+        <p class="project-hub__desc">RANS and LES simulations for internal and external flows. Custom boundary conditions, solvers, and post-processing pipelines.</p>
+      </a>
+
+      <a href="/projects/dafoam/" class="project-hub__card" style="text-decoration:none;">
+        <div class="project-hub__icon" style="background:rgba(255,107,53,0.08);font-size:1.8rem;">⚙️</div>
+        <div class="project-hub__title">DAFoam</div>
+        <div class="project-hub__count" style="margin-bottom:0.75rem;">
+          {{- $pages := where .Site.RegularPages "Section" "dafoam" -}}
+          {{ len $pages }} {{ if eq (len $pages) 1 }}project{{ else }}projects{{ end }} · Adjoint · Shape Optimization
+        </div>
+        <p class="project-hub__desc">Discrete adjoint-based aerodynamic shape optimization. Gradient computation for hundreds of design variables at the cost of a single flow solve.</p>
+      </a>
+
+      <a href="/projects/basilisk/" class="project-hub__card" style="text-decoration:none;">
+        <div class="project-hub__icon" style="background:rgba(0,255,136,0.08);font-size:1.8rem;">💧</div>
+        <div class="project-hub__title">Basilisk</div>
+        <div class="project-hub__count" style="margin-bottom:0.75rem;">
+          {{- $pages := where .Site.RegularPages "Section" "basilisk" -}}
+          {{ len $pages }} {{ if eq (len $pages) 1 }}project{{ else }}projects{{ end }} · Free-surface · AMR
+        </div>
+        <p class="project-hub__desc">Adaptive mesh refinement simulations of free-surface flows, droplet dynamics, and interfacial instabilities using the VOF method.</p>
+      </a>
+
+      <a href="/projects/code/" class="project-hub__card" style="text-decoration:none;">
+        <div class="project-hub__icon" style="background:rgba(255,215,0,0.08);font-size:1.8rem;">💻</div>
+        <div class="project-hub__title">Code</div>
+        <div class="project-hub__count" style="margin-bottom:0.75rem;">
+          {{- $pages := where .Site.RegularPages "Section" "code" -}}
+          {{ len $pages }} {{ if eq (len $pages) 1 }}project{{ else }}projects{{ end }} · Solvers · Scripts · Contributions
+        </div>
+        <p class="project-hub__desc">Custom numerical solvers, post-processing utilities, and open-source contributions in Python, C++, and MATLAB.</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+{{ end }}

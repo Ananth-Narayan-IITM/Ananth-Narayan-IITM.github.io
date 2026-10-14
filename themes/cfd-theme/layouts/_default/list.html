@@ -1,0 +1,57 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container" style="position:relative;">
+    <svg class="gear-watermark" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M100 60a40 40 0 1 0 0 80 40 40 0 0 0 0-80zm0 10a30 30 0 1 1 0 60 30 30 0 0 1 0-60z" fill="currentColor"/>
+      <path d="M92 10h16l4 20a60 60 0 0 1 14 6l18-10 11 11-10 18a60 60 0 0 1 6 14l20 4v16l-20 4a60 60 0 0 1-6 14l10 18-11 11-18-10a60 60 0 0 1-14 6l-4 20H92l-4-20a60 60 0 0 1-14-6l-18 10-11-11 10-18a60 60 0 0 1-6-14L30 108V92l20-4a60 60 0 0 1 6-14L46 56l11-11 18 10a60 60 0 0 1 14-6l4-20z" fill="currentColor"/>
+    </svg>
+    <p class="page-header__eyebrow">{{ .Section | upper }}</p>
+    <h1 class="page-header__title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="page-header__desc">{{ . }}</p>{{ end }}
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    {{ if .Pages }}
+    <div class="grid-3">
+      {{ range .Pages }}
+      <article class="card">
+        {{ with .Params.image }}
+        <div class="card__image">
+          <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+        </div>
+        {{ else }}
+        <div class="card__image">
+          <div class="placeholder placeholder--results">
+            <span class="placeholder__label">{{ .Title }}</span>
+            <span class="placeholder__dim">Add image: params.image in front matter</span>
+          </div>
+        </div>
+        {{ end }}
+        <div class="card__body">
+          {{ with .Params.tags }}
+          <div class="card__tags">
+            {{ range first 3 . }}
+            <span class="tag tag--muted">{{ . }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+          <h3 class="card__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          <p class="card__desc">{{ .Description | default (.Summary | truncate 140) }}</p>
+        </div>
+        <div class="card__footer">
+          <span class="card__meta">{{ .Date.Format "Jan 2006" }}</span>
+          <a href="{{ .RelPermalink }}" class="btn btn--ghost btn--sm">Read more →</a>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ else }}
+    <div style="padding:4rem 0;text-align:center;color:var(--text-muted);">
+      <p style="font-family:var(--font-mono);font-size:0.9rem;">No entries yet — add Markdown files to <code>content/{{ .Section }}/</code></p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,146 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container" style="position:relative;">
+    <svg class="gear-watermark" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M100 60a40 40 0 1 0 0 80 40 40 0 0 0 0-80zm0 10a30 30 0 1 1 0 60 30 30 0 0 1 0-60z" fill="currentColor"/>
+      <path d="M92 10h16l4 20a60 60 0 0 1 14 6l18-10 11 11-10 18a60 60 0 0 1 6 14l20 4v16l-20 4a60 60 0 0 1-6 14l10 18-11 11-18-10a60 60 0 0 1-14 6l-4 20H92l-4-20a60 60 0 0 1-14-6l-18 10-11-11 10-18a60 60 0 0 1-6-14L30 108V92l20-4a60 60 0 0 1 6-14L46 56l11-11 18 10a60 60 0 0 1 14-6l4-20z" fill="currentColor"/>
+    </svg>
+    <p class="page-header__eyebrow">Toolkit</p>
+    <h1 class="page-header__title">Skills &amp; Tools</h1>
+    <p class="page-header__desc">CFD software, programming languages, and the broader numerical methods toolkit.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    <!-- CFD Solvers -->
+    <div class="skills-grid" style="margin-bottom:4rem;">
+      <div>
+        <div class="skill-group__title">CFD Solvers</div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">OpenFOAM</span>
+            <span class="skill-item__level">Expert</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">DAFoam</span>
+            <span class="skill-item__level">Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">Basilisk</span>
+            <span class="skill-item__level">Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:78%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">SU2</span>
+            <span class="skill-item__level">Intermediate</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:60%"></div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-group__title">Programming</div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">Python</span>
+            <span class="skill-item__level">Expert</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:90%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">C / C++</span>
+            <span class="skill-item__level">Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">MATLAB</span>
+            <span class="skill-item__level">Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:75%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">Bash / Shell</span>
+            <span class="skill-item__level">Intermediate</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:65%"></div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="skill-group__title">Numerical Methods</div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">Finite Volume Method</span>
+            <span class="skill-item__level">Expert</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:92%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">Adjoint Methods</span>
+            <span class="skill-item__level">Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:80%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">LES / RANS Turbulence</span>
+            <span class="skill-item__level">Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:82%"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-item__header">
+            <span class="skill-item__name">VOF / Multiphase</span>
+            <span class="skill-item__level">Advanced</span>
+          </div>
+          <div class="skill-bar"><div class="skill-bar__fill" style="width:76%"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tools & software grid -->
+    <div style="margin-bottom:3rem;">
+      <div class="skill-group__title" style="margin-bottom:1.5rem;">Visualization &amp; Meshing</div>
+      <div class="tools-grid">
+        <span class="tool-pill">ParaView</span>
+        <span class="tool-pill">Gmsh</span>
+        <span class="tool-pill">snappyHexMesh</span>
+        <span class="tool-pill">blockMesh</span>
+        <span class="tool-pill">ICEM CFD</span>
+        <span class="tool-pill">VisIt</span>
+        <span class="tool-pill">Matplotlib</span>
+        <span class="tool-pill">NumPy / SciPy</span>
+      </div>
+    </div>
+
+    <div style="margin-bottom:3rem;">
+      <div class="skill-group__title" style="margin-bottom:1.5rem;">Dev &amp; Workflow</div>
+      <div class="tools-grid">
+        <span class="tool-pill">Git / GitHub</span>
+        <span class="tool-pill">Linux / HPC clusters</span>
+        <span class="tool-pill">MPI (parallel CFD)</span>
+        <span class="tool-pill">Docker</span>
+        <span class="tool-pill">LaTeX</span>
+        <span class="tool-pill">Jupyter</span>
+        <span class="tool-pill">VS Code</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+{{ end }}

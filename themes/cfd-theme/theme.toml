@@ -1,0 +1,9 @@
+name = "cfd-theme"
+license = "MIT"
+licenselink = ""
+description = "Dark CFD-aesthetic portfolio theme — fluid, heat, optimization."
+homepage = ""
+min_version = "0.120.0"
+
+[author]
+  name = "Ananth Narayan"

@@ -1,0 +1,59 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container">
+    <p class="page-header__eyebrow">Reference Material</p>
+    <h1 class="page-header__title">Notes</h1>
+    <p class="page-header__desc">Derivations, methods, and thought processes — for future reference. Math rendered with KaTeX.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+
+    {{ $notes := .Pages }}
+    {{ $categories := slice }}
+    {{ range $notes }}
+      {{ $cat := .Params.category | default "General" }}
+      {{ $categories = $categories | append $cat | uniq }}
+    {{ end }}
+
+    {{ if $notes }}
+      {{ range $categories }}
+        {{ $cat := . }}
+        {{ $catNotes := where $notes ".Params.category" $cat }}
+        {{ if $catNotes }}
+        <div style="margin-bottom:3rem;">
+          <h2 style="font-family:var(--font-mono);font-size:0.82rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:0.75rem;">
+            {{ $cat }}
+            <span style="flex:1;height:1px;background:var(--border);display:block;"></span>
+          </h2>
+          <div class="notes-list">
+            {{ range $catNotes }}
+            <div class="note-item">
+              <div>
+                <div class="note-item__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
+                <div class="note-item__desc">{{ .Description | default (.Summary | truncate 160) }}</div>
+                {{ with .Params.tags }}
+                <div style="display:flex;gap:0.4rem;margin-top:0.6rem;flex-wrap:wrap;">
+                  {{ range . }}<span class="tag tag--muted" style="font-size:0.72rem;">{{ . }}</span>{{ end }}
+                </div>
+                {{ end }}
+              </div>
+              <div class="note-item__date">{{ .Date.Format "02 Jan 2006" }}</div>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      {{ end }}
+    {{ else }}
+    <div style="padding:4rem 0;text-align:center;">
+      <p style="font-family:var(--font-mono);font-size:0.9rem;color:var(--text-muted);">
+        Add <code>.md</code> files to <code>content/notes/</code> with front matter: <code>category: "Derivation"</code>
+      </p>
+    </div>
+    {{ end }}
+
+  </div>
+</section>
+{{ end }}

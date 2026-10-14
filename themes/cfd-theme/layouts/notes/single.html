@@ -1,0 +1,37 @@
+{{ define "main" }}
+<div style="padding-top:68px;">
+  <div class="container">
+    <div class="note-header">
+      <div class="note-header__category">
+        <a href="/notes/" style="color:var(--c-fluid);">Notes</a>
+        {{ with .Params.category }} · {{ . }}{{ end }}
+      </div>
+      <h1 class="note-header__title">{{ .Title }}</h1>
+      <div class="note-header__meta">
+        <span>{{ .Date.Format "02 January 2006" }}</span>
+        {{ with .Params.tags }}
+        <span>·</span>
+        {{ range . }}<span>{{ . }}</span>{{ end }}
+        {{ end }}
+        {{ with .ReadingTime }}<span>· {{ . }} min read</span>{{ end }}
+      </div>
+    </div>
+
+    <div class="note-content">
+      {{ .Content }}
+    </div>
+
+    <div style="margin-top:4rem;padding-top:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:4rem;">
+      <a href="/notes/" class="btn btn--ghost btn--sm">← All Notes</a>
+      <div style="display:flex;gap:0.75rem;">
+        {{ with .PrevInSection }}
+        <a href="{{ .RelPermalink }}" class="btn btn--ghost btn--sm">← {{ .Title | truncate 30 }}</a>
+        {{ end }}
+        {{ with .NextInSection }}
+        <a href="{{ .RelPermalink }}" class="btn btn--ghost btn--sm">{{ .Title | truncate 30 }} →</a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+{{ end }}

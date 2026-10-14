@@ -1,0 +1,38 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container">
+    <p class="page-header__eyebrow">
+      <a href="{{ .Parent.RelPermalink }}" style="color:var(--c-fluid);">{{ .Parent.Title }}</a>
+      &nbsp;/
+    </p>
+    <h1 class="page-header__title">{{ .Title }}</h1>
+    {{ with .Description }}<p class="page-header__desc">{{ . }}</p>{{ end }}
+    {{ with .Params.tags }}
+    <div class="hero__tags" style="margin-top:1.5rem;margin-bottom:0;">
+      {{ range . }}<span class="tag tag--muted">{{ . }}</span>{{ end }}
+    </div>
+    {{ end }}
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div style="max-width:800px;margin:0 auto;">
+      {{ with .Params.image }}
+      <div style="margin-bottom:2.5rem;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--border);">
+        <img src="{{ . }}" alt="{{ $.Title }}" style="width:100%;aspect-ratio:16/9;object-fit:cover;">
+      </div>
+      {{ end }}
+      <div class="note-content">
+        {{ .Content }}
+      </div>
+      <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;">
+        <a href="{{ .Parent.RelPermalink }}" class="btn btn--ghost btn--sm">← Back to {{ .Parent.Title }}</a>
+        {{ with .NextInSection }}
+        <a href="{{ .RelPermalink }}" class="btn btn--ghost btn--sm">{{ .Title }} →</a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

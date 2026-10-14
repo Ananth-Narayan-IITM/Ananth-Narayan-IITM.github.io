@@ -1,0 +1,40 @@
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="footer__brand-name">Ananth Narayan</div>
+        <p class="footer__brand-desc">
+          Computational Fluid Dynamics researcher at IIT Madras.
+          Simulating flows, optimizing forms — from turbulence to adjoint-based design.
+        </p>
+      </div>
+      <div>
+        <div class="footer__heading">Pages</div>
+        <ul class="footer__links">
+          {{ range .Site.Menus.main }}
+          <li><a href="{{ .URL }}" class="footer__link">{{ .Name }}</a></li>
+          {{ end }}
+        </ul>
+      </div>
+      <div>
+        <div class="footer__heading">Projects</div>
+        <ul class="footer__links">
+          <li><a href="/projects/openfoam/" class="footer__link">OpenFOAM</a></li>
+          <li><a href="/projects/dafoam/"   class="footer__link">DAFoam</a></li>
+          <li><a href="/projects/basilisk/" class="footer__link">Basilisk</a></li>
+          <li><a href="/projects/code/"     class="footer__link">Code</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">
+        © {{ now.Year }} {{ .Site.Params.author }} · Built with Hugo
+      </span>
+      <div class="footer__social">
+        <a href="{{ .Site.Params.github }}" class="footer__social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <a href="mailto:{{ .Site.Params.email }}" class="footer__social-link">Email</a>
+        <a href="/notes/" class="footer__social-link">Notes</a>
+      </div>
+    </div>
+  </div>
+</footer>

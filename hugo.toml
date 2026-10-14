@@ -1,0 +1,58 @@
+baseURL = 'https://ananth-narayan-iitm.github.io/'
+languageCode = 'en-us'
+title = 'Ananth Narayan | CFD & Optimization'
+theme = 'cfd-theme'
+enableRobotsTXT = true
+enableGitInfo = false
+
+[params]
+  description = "Computational Fluid Dynamics researcher at IIT Madras — simulating flows, optimizing forms."
+  author = "Ananth Narayan"
+  institution = "IIT Madras"
+  github = "https://github.com/Ananth-Narayan-IITM"
+  email = "am24d038@smail.iitm.ac.in"
+  keywords = ["CFD", "OpenFOAM", "DAFoam", "Basilisk", "aerodynamics", "optimization", "IIT Madras"]
+
+[markup]
+  [markup.highlight]
+    style = "monokai"
+    lineNos = false
+    noClasses = true
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[menu]
+  [[menu.main]]
+    name = "Overview"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 2
+    [menu.main.params]
+      hasDropdown = true
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 3
+  [[menu.main]]
+    name = "Publications"
+    url = "/publications/"
+    weight = 4
+  [[menu.main]]
+    name = "Skills"
+    url = "/skills/"
+    weight = 5
+  [[menu.main]]
+    name = "Notes"
+    url = "/notes/"
+    weight = 6
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 7
+
+[taxonomies]
+  tag = "tags"
+  category = "categories"

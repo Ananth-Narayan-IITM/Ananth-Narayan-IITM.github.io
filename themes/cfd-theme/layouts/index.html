@@ -1,0 +1,368 @@
+{{ define "main" }}
+
+<!-- ======================================================
+     HERO
+     ====================================================== -->
+<section class="hero" aria-label="Introduction">
+  <div class="hero__bg">
+    <!-- Subtle grid -->
+    <div class="hero__grid"></div>
+    <!-- Radial gradient overlays -->
+    <div class="hero__gradient"></div>
+    <!-- CFD Pressure Contours — concentric ellipses mimicking pressure field around a lifting body -->
+    <svg class="hero__contours" viewBox="0 0 1440 800" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <!-- Soft glow for the descending particle -->
+        <filter id="particle-glow" x="-100%" y="-100%" width="300%" height="300%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <!-- The descent path used by animateMotion -->
+        <path id="gd-path" d="M340,155 C410,185 480,215 555,248 C625,278 685,305 740,324 C782,338 815,347 845,353 C858,356 866,358 871,359" fill="none"/>
+      </defs>
+
+      <!-- Loss landscape contours — concentric ellipses, blue (high loss) → red (minimum) -->
+      <ellipse class="contour c10" cx="870" cy="425" rx="985" ry="618" transform="rotate(-1 870 425)"/>
+      <ellipse class="contour c9"  cx="875" cy="413" rx="838" ry="524" transform="rotate(-2 875 413)"/>
+      <ellipse class="contour c8"  cx="880" cy="401" rx="700" ry="435" transform="rotate(-3 880 401)"/>
+      <ellipse class="contour c7"  cx="884" cy="391" rx="570" ry="352" transform="rotate(-4 884 391)"/>
+      <ellipse class="contour c6"  cx="888" cy="382" rx="448" ry="276" transform="rotate(-5 888 382)"/>
+      <ellipse class="contour c5"  cx="892" cy="374" rx="336" ry="207" transform="rotate(-6 892 374)"/>
+      <ellipse class="contour c4"  cx="895" cy="367" rx="238" ry="146" transform="rotate(-7 895 367)"/>
+      <ellipse class="contour c3"  cx="898" cy="362" rx="155" ry="95"  transform="rotate(-8 898 362)"/>
+      <ellipse class="contour c2"  cx="900" cy="358" rx="88"  ry="53"  transform="rotate(-9 900 358)"/>
+      <ellipse class="contour c1"  cx="900" cy="355" rx="38"  ry="22"  transform="rotate(-10 900 355)"/>
+
+      <!-- Gradient descent trajectory — dashed line from high-loss region to minimum -->
+      <use href="#gd-path" class="gd-trail"/>
+
+      <!-- Iteration step markers — faint dots at each GD update -->
+      <circle class="gd-step" cx="340" cy="155" r="3.5" fill="#0066ff"/>
+      <circle class="gd-step" cx="430" cy="193" r="3"   fill="#0099ee"/>
+      <circle class="gd-step" cx="520" cy="228" r="3"   fill="#00bbcc"/>
+      <circle class="gd-step" cx="605" cy="260" r="2.8" fill="#00dd99"/>
+      <circle class="gd-step" cx="680" cy="288" r="2.8" fill="#88ee00"/>
+      <circle class="gd-step" cx="745" cy="312" r="2.5" fill="#ddcc00"/>
+      <circle class="gd-step" cx="800" cy="331" r="2.5" fill="#ff9900"/>
+      <circle class="gd-step" cx="843" cy="347" r="2.2" fill="#ff5500"/>
+      <circle class="gd-step" cx="866" cy="356" r="2.2" fill="#ff2200"/>
+      <!-- Minimum marker: small cross-hairs -->
+      <line x1="871" y1="352" x2="871" y2="366" class="gd-minimum-line"/>
+      <line x1="864" y1="359" x2="878" y2="359" class="gd-minimum-line"/>
+      <circle cx="871" cy="359" r="3" class="gd-minimum-dot"/>
+
+      <!-- Animated particle descending the gradient — loops every 9s -->
+      <circle r="5" fill="white" filter="url(#particle-glow)" class="gd-particle">
+        <animateMotion dur="9s" repeatCount="indefinite" calcMode="spline"
+          keyTimes="0;0.12;0.24;0.36;0.48;0.60;0.72;0.82;0.90;1"
+          keySplines="0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1;0.4 0 0.6 1">
+          <mpath href="#gd-path"/>
+        </animateMotion>
+        <!-- Fade in at start, fade out near end before loop -->
+        <animate attributeName="opacity" dur="9s" repeatCount="indefinite"
+          values="0;0.7;0.7;0.7;0.7;0.7;0.7;0.6;0.3;0"
+          keyTimes="0;0.08;0.2;0.4;0.6;0.75;0.88;0.93;0.97;1"/>
+      </circle>
+    </svg>
+  </div>
+
+  <div class="hero__content container">
+    <p class="hero__eyebrow">Computational Fluid Dynamics &amp; Optimization</p>
+    <h1 class="hero__title">Ananth Narayan</h1>
+    <p class="hero__subtitle">
+      Researcher at IIT Madras — simulating turbulent flows, free-surface dynamics,
+      and adjoint-based aerodynamic shape optimization.
+    </p>
+    <div class="hero__tags">
+      <span class="tag tag--fluid">OpenFOAM</span>
+      <span class="tag tag--heat">DAFoam</span>
+      <span class="tag tag--gold">Basilisk</span>
+      <span class="tag tag--green">Python / C++</span>
+      <span class="tag tag--purple">Adjoint Methods</span>
+    </div>
+    <div class="hero__actions">
+      <a href="/projects/" class="btn btn--primary">View Projects →</a>
+      <a href="/about/"    class="btn btn--ghost">About Me</a>
+    </div>
+  </div>
+
+  <div class="hero__scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ======================================================
+     FEATURED RESULTS
+     ====================================================== -->
+<section class="section featured-results" id="results">
+  <div class="container">
+    <div class="section__header">
+      <div>
+        <h2 class="section__title">Featured Results</h2>
+        <p class="section__subtitle" style="margin-bottom:0">Select simulations and optimizations</p>
+      </div>
+      <a href="/projects/" class="btn btn--ghost btn--sm link-arrow">All projects</a>
+    </div>
+
+    <div class="grid-3">
+
+      <article class="card">
+        <div class="card__image">
+          <div class="placeholder placeholder--results">
+            <span class="placeholder__label">OpenFOAM · Turbulent Channel Flow<br>Re_τ = 395</span>
+            <span class="placeholder__dim">1200 × 675 px · replace with ParaView screenshot</span>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="card__tags">
+            <span class="tag tag--fluid">OpenFOAM</span>
+            <span class="tag tag--muted">LES</span>
+          </div>
+          <h3 class="card__title"><a href="/projects/openfoam/">Turbulent Channel Flow</a></h3>
+          <p class="card__desc">Large-eddy simulation at Reτ = 395. Velocity statistics benchmarked against DNS data of Kim et al.</p>
+        </div>
+        <div class="card__footer">
+          <span class="card__meta">Re_τ 395 · 128³ cells</span>
+          <a href="/projects/openfoam/" class="btn btn--ghost btn--sm">Details →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__image">
+          <div class="placeholder placeholder--fire">
+            <span class="placeholder__label">DAFoam · Wing Shape Optimization<br>CL/CD maximization</span>
+            <span class="placeholder__dim">1200 × 675 px · replace with adjoint result</span>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="card__tags">
+            <span class="tag tag--heat">DAFoam</span>
+            <span class="tag tag--gold">Optimization</span>
+          </div>
+          <h3 class="card__title"><a href="/projects/dafoam/">Aerodynamic Shape Optimization</a></h3>
+          <p class="card__desc">Adjoint-based L/D maximization of a transonic wing. 72 shape design variables, 12% drag reduction.</p>
+        </div>
+        <div class="card__footer">
+          <span class="card__meta">ΔC_D −12% · 50 iterations</span>
+          <a href="/projects/dafoam/" class="btn btn--ghost btn--sm">Details →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card__image">
+          <div class="placeholder placeholder--blue">
+            <span class="placeholder__label">Basilisk · Rising Bubble<br>VOF — Rayleigh-Taylor</span>
+            <span class="placeholder__dim">1200 × 675 px · replace with Basilisk output</span>
+          </div>
+        </div>
+        <div class="card__body">
+          <div class="card__tags">
+            <span class="tag tag--fluid">Basilisk</span>
+            <span class="tag tag--muted">Multiphase</span>
+          </div>
+          <h3 class="card__title"><a href="/projects/basilisk/">Rayleigh-Taylor Instability</a></h3>
+          <p class="card__desc">Volume-of-fluid simulation of RT instability growth. Adaptive mesh refinement tracks the interface automatically.</p>
+        </div>
+        <div class="card__footer">
+          <span class="card__meta">AMR · VOF interface</span>
+          <a href="/projects/basilisk/" class="btn btn--ghost btn--sm">Details →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     STATS BAR
+     ====================================================== -->
+<div class="stats-bar" aria-label="Quick statistics">
+  <div class="container">
+    <div class="stats-bar__grid">
+      <div>
+        <div class="stat__value">4+</div>
+        <div class="stat__label">CFD Solvers</div>
+      </div>
+      <div>
+        <div class="stat__value">10+</div>
+        <div class="stat__label">Projects</div>
+      </div>
+      <div>
+        <div class="stat__value">3+</div>
+        <div class="stat__label">Publications</div>
+      </div>
+      <div>
+        <div class="stat__value">IIT</div>
+        <div class="stat__label">Madras</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================
+     PROJECT HUB PREVIEW
+     ====================================================== -->
+<section class="section" aria-labelledby="projects-heading">
+  <div class="container">
+    <div class="section__header">
+      <div>
+        <h2 class="section__title" id="projects-heading">Projects</h2>
+        <p class="section__subtitle" style="margin-bottom:0">Simulation · Optimization · Code</p>
+      </div>
+      <a href="/projects/" class="btn btn--ghost btn--sm link-arrow">All projects</a>
+    </div>
+
+    <div class="project-hub">
+
+      <a href="/projects/openfoam/" class="project-hub__card" style="text-decoration:none;">
+        <div class="project-hub__icon" style="background:rgba(0,212,255,0.08);">🌊</div>
+        <div class="project-hub__title">OpenFOAM</div>
+        <div class="project-hub__count">Turbulence · Heat Transfer · Combustion</div>
+        <p class="project-hub__desc">RANS and LES simulations for internal and external flows. Custom boundary conditions and post-processing pipelines.</p>
+      </a>
+
+      <a href="/projects/dafoam/" class="project-hub__card" style="text-decoration:none;">
+        <div class="project-hub__icon" style="background:rgba(255,107,53,0.08);">⚙️</div>
+        <div class="project-hub__title">DAFoam</div>
+        <div class="project-hub__count">Adjoint · Shape Optimization · Sensitivity</div>
+        <p class="project-hub__desc">Discrete adjoint-based aerodynamic shape optimization. Gradient computation for hundreds of design variables at solver cost.</p>
+      </a>
+
+      <a href="/projects/basilisk/" class="project-hub__card" style="text-decoration:none;">
+        <div class="project-hub__icon" style="background:rgba(0,255,136,0.08);">💧</div>
+        <div class="project-hub__title">Basilisk</div>
+        <div class="project-hub__count">Free-surface · Multiphase · AMR</div>
+        <p class="project-hub__desc">Adaptive mesh refinement simulations of free-surface flows, droplet dynamics, and Rayleigh-Taylor/Kelvin-Helmholtz instabilities.</p>
+      </a>
+
+      <a href="/projects/code/" class="project-hub__card" style="text-decoration:none;">
+        <div class="project-hub__icon" style="background:rgba(255,215,0,0.08);">💻</div>
+        <div class="project-hub__title">Code</div>
+        <div class="project-hub__count">Solvers · Scripts · Contributions</div>
+        <p class="project-hub__desc">Custom numerical solvers, post-processing tools, and open-source contributions written in Python, C++, and MATLAB.</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     ABOUT SNIPPET
+     ====================================================== -->
+<section class="section" style="background:var(--bg-secondary);" aria-labelledby="about-heading">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;">
+      <div>
+        <p class="hero__eyebrow" style="margin-bottom:1rem;">About</p>
+        <h2 id="about-heading" style="margin-bottom:1.25rem;">Researcher &amp;<br>Engineer</h2>
+        <p>I work at the intersection of numerical methods, fluid mechanics, and computational optimization. My research focuses on high-fidelity CFD simulations and gradient-based aerodynamic shape optimization using adjoint methods.</p>
+        <p>Currently pursuing my degree at <strong style="color:var(--text-primary)">IIT Madras</strong>, where I work with OpenFOAM, DAFoam, and Basilisk as primary simulation tools.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+          <a href="/about/"        class="btn btn--primary">Full Bio →</a>
+          <a href="/publications/" class="btn btn--ghost">Publications</a>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+        <div style="padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;">🌡️</div>
+          <div style="font-size:0.85rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Heat Transfer</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);">Conjugate HT, thermal boundary layers</div>
+        </div>
+        <div style="padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;">✈️</div>
+          <div style="font-size:0.85rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Aerodynamics</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);">Adjoint-based shape optimization</div>
+        </div>
+        <div style="padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;">🌊</div>
+          <div style="font-size:0.85rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Multiphase Flow</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);">VOF, free-surface dynamics</div>
+        </div>
+        <div style="padding:1.5rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg);">
+          <div style="font-size:1.5rem;margin-bottom:0.75rem;">⚡</div>
+          <div style="font-size:0.85rem;font-weight:600;color:var(--text-primary);margin-bottom:0.3rem;">Turbulence</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);">LES, RANS, DNS validation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     RECENT NOTES PREVIEW
+     ====================================================== -->
+<section class="section" aria-labelledby="notes-heading">
+  <div class="container">
+    <div class="section__header">
+      <div>
+        <h2 class="section__title" id="notes-heading">Notes</h2>
+        <p class="section__subtitle" style="margin-bottom:0">Derivations, methods, and reference material</p>
+      </div>
+      <a href="/notes/" class="btn btn--ghost btn--sm link-arrow">All notes</a>
+    </div>
+
+    {{ $notes := where .Site.RegularPages "Section" "notes" }}
+    {{ $notes := $notes | first 3 }}
+    {{ if $notes }}
+    <div class="notes-list">
+      {{ range $notes }}
+      <div class="note-item">
+        <div>
+          <div class="note-item__category">{{ .Params.category | default "Note" }}</div>
+          <div class="note-item__title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></div>
+          <div class="note-item__desc">{{ .Description | default (.Summary | truncate 120) }}</div>
+        </div>
+        <div class="note-item__date">{{ .Date.Format "Jan 2006" }}</div>
+      </div>
+      {{ end }}
+    </div>
+    {{ else }}
+    <div class="notes-list">
+      <div class="note-item">
+        <div>
+          <div class="note-item__category">Derivation</div>
+          <div class="note-item__title"><a href="/notes/">Navier-Stokes Equations from First Principles</a></div>
+          <div class="note-item__desc">Reynolds transport theorem approach, leading to the incompressible N-S equations.</div>
+        </div>
+        <div class="note-item__date">Oct 2024</div>
+      </div>
+      <div class="note-item">
+        <div>
+          <div class="note-item__category">Method</div>
+          <div class="note-item__title"><a href="/notes/">Adjoint Method for PDE-Constrained Optimization</a></div>
+          <div class="note-item__desc">Lagrangian formulation, discrete vs. continuous adjoint, and implementation considerations.</div>
+        </div>
+        <div class="note-item__date">Sep 2024</div>
+      </div>
+      <div class="note-item">
+        <div>
+          <div class="note-item__category">Theory</div>
+          <div class="note-item__title"><a href="/notes/">SIMPLE Algorithm — Pressure-Velocity Coupling</a></div>
+          <div class="note-item__desc">Step-by-step derivation of the SIMPLE algorithm and its variants (SIMPLEC, PISO).</div>
+        </div>
+        <div class="note-item__date">Aug 2024</div>
+      </div>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<!-- ======================================================
+     CTA — CONTACT
+     ====================================================== -->
+<section class="section" style="background:var(--bg-secondary);text-align:center;" aria-labelledby="cta-heading">
+  <div class="container">
+    <p style="font-family:var(--font-mono);font-size:0.78rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--c-fluid);margin-bottom:1rem;">Get in touch</p>
+    <h2 id="cta-heading" style="margin-bottom:1rem;">Let's work together</h2>
+    <p style="max-width:480px;margin:0 auto 2.5rem;">
+      Open to research collaborations, internships, and full-time roles in CFD, aerodynamics, and computational optimization.
+    </p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="/contact/"                  class="btn btn--primary">Contact Me →</a>
+      <a href="{{ .Site.Params.github }}"  class="btn btn--ghost" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+{{ end }}

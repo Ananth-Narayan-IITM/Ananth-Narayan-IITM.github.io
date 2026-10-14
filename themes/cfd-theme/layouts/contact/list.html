@@ -1,0 +1,110 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="container">
+    <p class="page-header__eyebrow">Get in touch</p>
+    <h1 class="page-header__title">Contact &amp; Hobbies</h1>
+    <p class="page-header__desc">Open to research collaborations, internships, and full-time roles in CFD, aerodynamics, and computational optimization.</p>
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-layout">
+
+      <!-- Left: mailto contact panel -->
+      <div>
+        <h2 style="margin-bottom:0.5rem;font-size:1.5rem;">Send a message</h2>
+        <p style="margin-bottom:2rem;font-size:0.9rem;">
+          Click the button below — it opens your email client with the address pre-filled.
+          No third-party service involved; your email goes directly to my inbox.
+        </p>
+
+        <!-- Big mailto CTA -->
+        <a href="mailto:am24d038@smail.iitm.ac.in?subject=Portfolio%20Inquiry&body=Hi%20Ananth%2C%0A%0AName%3A%20%0AInstitution%3A%20%0AMessage%3A%20"
+           class="btn btn--primary"
+           style="font-size:1rem;padding:1rem 2rem;margin-bottom:2rem;display:inline-flex;">
+          Open Email Client →
+        </a>
+
+        <!-- Copyable email address block -->
+        <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-md);padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;">
+          <div>
+            <div style="font-family:var(--font-mono);font-size:0.72rem;color:var(--text-muted);letter-spacing:0.08em;margin-bottom:0.3rem;">DIRECT EMAIL</div>
+            <a href="mailto:am24d038@smail.iitm.ac.in" style="font-family:var(--font-mono);font-size:0.95rem;color:var(--c-fluid);">
+              am24d038@smail.iitm.ac.in
+            </a>
+          </div>
+          <button onclick="navigator.clipboard.writeText('am24d038@smail.iitm.ac.in').then(()=>{this.textContent='Copied!';setTimeout(()=>this.textContent='Copy',2000)})"
+                  class="btn btn--ghost btn--sm" style="font-family:var(--font-mono);">
+            Copy
+          </button>
+        </div>
+
+        <div style="background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.12);border-radius:var(--radius-md);padding:1.25rem 1.5rem;">
+          <p style="font-size:0.85rem;margin-bottom:0;color:var(--text-secondary);">
+            <strong style="color:var(--text-primary);">Typical response time:</strong> 1–3 working days.<br>
+            For research enquiries, please mention your institution and the topic briefly in the subject line.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: contact info + hobbies -->
+      <div>
+        <h2 style="margin-bottom:1.5rem;font-size:1.3rem;">Find me here</h2>
+        <div class="contact-info" style="margin-bottom:3rem;">
+          <div class="contact-info-item">
+            <span class="contact-info-item__icon">📧</span>
+            <div>
+              <div class="contact-info-item__label">IIT Madras Email</div>
+              <div class="contact-info-item__value">
+                <a href="mailto:am24d038@smail.iitm.ac.in" style="color:var(--c-fluid);">am24d038@smail.iitm.ac.in</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <span class="contact-info-item__icon">🐙</span>
+            <div>
+              <div class="contact-info-item__label">GitHub</div>
+              <div class="contact-info-item__value">
+                <a href="{{ .Site.Params.github }}" target="_blank" rel="noopener noreferrer" style="color:var(--c-fluid);">Ananth-Narayan-IITM ↗</a>
+              </div>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <span class="contact-info-item__icon">🏛️</span>
+            <div>
+              <div class="contact-info-item__label">Institution</div>
+              <div class="contact-info-item__value">IIT Madras, Chennai, India</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 style="margin-bottom:1.5rem;font-size:1.3rem;">Hobbies &amp; Interests</h2>
+        <div class="hobbies-grid">
+          <div class="hobby-card">
+            <div class="hobby-card__icon">📚</div>
+            <div class="hobby-card__name">Reading</div>
+            <div class="hobby-card__desc">Science, history of mathematics, fluid mechanics classics</div>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-card__icon">🎸</div>
+            <div class="hobby-card__name">Music</div>
+            <div class="hobby-card__desc">Guitar — Carnatic classical and fingerstyle</div>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-card__icon">🏃</div>
+            <div class="hobby-card__name">Running</div>
+            <div class="hobby-card__desc">Early mornings — also an excuse to think about aerodynamics</div>
+          </div>
+          <div class="hobby-card">
+            <div class="hobby-card__icon">🧩</div>
+            <div class="hobby-card__name">Problem Solving</div>
+            <div class="hobby-card__desc">Competitive math and algorithm puzzles</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+{{ end }}
