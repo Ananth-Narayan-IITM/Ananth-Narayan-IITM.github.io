@@ -20,6 +20,12 @@ enableGitInfo = false
     noClasses = true
   [markup.goldmark.renderer]
     unsafe = true
+  # Passthrough: stop goldmark from treating _ and * inside math blocks as markdown
+  [markup.goldmark.extensions.passthrough]
+    enable = true
+    [markup.goldmark.extensions.passthrough.delimiters]
+      block  = [['$$', '$$']]
+      inline = [['$',  '$' ]]
 
 [menu]
   [[menu.main]]
